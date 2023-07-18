@@ -1,0 +1,36 @@
+*{
+  scroll-behavior: smooth;
+}
+.app{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(75, 0, 130,0.9);
+  color: white;
+  padding-top:130px;
+  padding-bottom: 4rem;
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .app{
+    padding-top:100px;
+  }
+}
+@media (max-width: 600px) {
+  .app{
+    padding-top:80px;
+  }
+}
+@media (min-width: 1500px){
+  .app{
+    padding-top:200px;
+  }
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.content-pagination{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}

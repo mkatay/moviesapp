@@ -1,0 +1,188 @@
+"dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.13.7",
+    "@mui/styles": "^5.14.0",
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.14.1"
+  },
+***********************vite.config
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, process.cwd());
+  return {
+    base:"/lazy/",
+    plugins: [react()],
+    server: {
+      port: env.VITE_PORT,
+    },
+    build: {
+        chunkSizeWarningLimit: 1600
+    }
+  };
+});
+**************************.env
+VITE_API_KEY=9cc1258c8b2f2e4d1d54c581ec774f91
+****************App.css
+.app{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(75, 0, 130,0.9);
+  color: white;
+  padding-top:130px;
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .app{
+    padding-top:100px;
+  }
+}
+@media (max-width: 600px) {
+  .app{
+    padding-top:80px;
+  }
+}
+@media (min-width: 1500px){
+  .app{
+    padding-top:200px;
+  }
+}
+***************App.jsx
+.app{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(75, 0, 130,0.9);
+  color: white;
+  padding-top:130px;
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .app{
+    padding-top:100px;
+  }
+}
+@media (max-width: 600px) {
+  .app{
+    padding-top:80px;
+  }
+}
+@media (min-width: 1500px){
+  .app{
+    padding-top:200px;
+  }
+}
+********************utils.jsx
+import axios from 'axios';
+
+
+export const getData=async ({queryKey})=>{
+    console.log(queryKey);
+    const url=queryKey[1]
+    const resp = await axios.get(url)
+    return resp.data
+}
+********************Header.css
+.header{
+    width: 100vw;
+    position:fixed;
+    display: flex;
+    justify-content: center;
+    background-color:indigo;
+    color:white;
+    font-size: 4vw;
+    padding: 0.5rem;
+    box-shadow: 0px 5px 5px black;
+    z-index: 100;
+    margin: 0;
+}
+*******************Header.jsx
+import React from 'react'
+import './Header.css'
+
+export const Header = () => {
+  return (
+    <h1 className="header">🎞️ Movies 📽️</h1>
+    
+  )
+}
+
+**************BottomNav.jsx
+import React from 'react'
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
+import MovieCreationIcon from '@mui/icons-material/MovieCreation';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import {Link,useLocation} from 'react-router-dom'
+import { makeStyles } from '@mui/styles'
+
+const useStyles=makeStyles({
+  root:{
+    width:500,
+    position:'fixed',
+    bottom:0,
+    zIndex:100,
+    backgroundColor:'lightindigo!important'
+  }
+})
+
+export const BottomNav=()=> {
+  const classes=useStyles()
+  return (
+    <Box sx={{display:'flex',justifyContent: 'center'}}>
+      <BottomNavigation
+        showLabels={true}
+        value={useLocation().pathname}
+        className={classes.root}
+        
+      >
+        <BottomNavigationAction label="Trending" icon={<TrendingUpIcon />} 
+          component={Link} 
+          value='/'
+          to='/' 
+         
+          />
+        <BottomNavigationAction label="Movies" icon={<MovieCreationIcon />} 
+          component={Link} 
+          value='/movies'
+          to='/movies' 
+         
+          />
+        <BottomNavigationAction label="TV-Series" icon={<ConnectedTvIcon />} 
+          component={Link} 
+          value='/series'
+          to='/series'
+         
+          />
+      </BottomNavigation>
+    </Box>
+  );
+}
+***********************Treanding.jsx
+import React from 'react'
+import {useQuery} from 'react-query'
+import { getData } from '../utils'
+
+const urlTrending=`https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}`
+
+export const Trending = () => {
+    const { data,status, isLoading, isError } = useQuery(['trendings', urlTrending], getData);
+    
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+  
+    if (isError) {
+      return <div>Error occurred while fetching images</div>;
+    }
+    status=='success' && console.log(data.results);
+  
+  return (
+    <div>Trending</div>
+  )
+}

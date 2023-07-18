@@ -1,0 +1,22 @@
+.single-content{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: rgb(58, 1, 98);
+    color: white;
+    padding: 10px;
+    margin:5px;
+    border-radius: 5px;
+}
+.single-content:hover{
+    background-color:white;
+    color: rgb(58, 1, 98);
+}
+.info{
+display: flex;
+justify-content: space-around;
+}
+.single-content h3{
+    text-align: center;
+    text-transform: uppercase;;
+}
