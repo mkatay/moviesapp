@@ -27,10 +27,14 @@
 .content{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .content-pagination{
   width: 100%;
   display: flex;
   justify-content: center;
   
+}
+.content-pagination li button{
+  margin: 0 !important;
 }

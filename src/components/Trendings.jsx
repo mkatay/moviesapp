@@ -16,7 +16,7 @@ export const Trendings = () => {
     }
   
     if (isError) {
-      return <div>Error occurred while fetching images</div>;
+      return <div>Error occurred while fetching data!</div>;
     }
     status=='success' && console.log(data.results);
   
