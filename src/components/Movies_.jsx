@@ -4,7 +4,7 @@ import { getData } from '../utils'
 import { SingleContent } from './SingleContent'
 import { ContentPagination } from './ContentPagination'
 import { useState} from 'react'
-
+import { Genres } from './Genres'
 
 
 //const urlMovies=`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&sort_by=release_date.desc`
@@ -13,9 +13,9 @@ import { useState} from 'react'
 
 const urlMovies=`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}`
 
-export const Movies = ({urlForGenre}) => {
+export const Movies = () => {
   const [page,setPage]=useState(1)
-  const { data,status, isLoading, isError } = useQuery(['movies', urlMovies+'&page='+page+'&with_genres='+urlForGenre], getData);
+  const { data,status, isLoading, isError } = useQuery(['movies', urlMovies+'&page='+page], getData);
       
   if (isLoading) {
     return <div>Loading...</div>;
@@ -28,7 +28,7 @@ export const Movies = ({urlForGenre}) => {
 
 return (
   <div className="content">
-  
+    <Genres type='movie' />
   {status=='success' && data.results.map(obj=>
     <SingleContent key={obj.id}
       id={obj.id}
