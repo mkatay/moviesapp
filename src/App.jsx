@@ -3,7 +3,7 @@ import './App.css'
 import { Header } from './components/Header'
 import { Trendings } from './components/Trendings'
 import { MoviesPage } from './components/MoviesPage'
-import { Series } from './components/Series'
+import { SeriesPage } from './components/SeriesPage'
 import { BottomNav } from './components/BottomNav'
 import {QueryClient,QueryClientProvider} from 'react-query'
 
@@ -19,7 +19,7 @@ function App() {
        <Routes>
         <Route path='/' element={<Trendings />} />
         <Route path='/movies' element={<MoviesPage />} />
-        <Route path='/series' element={<Series />} />
+        <Route path='/series' element={<SeriesPage />} />
        </Routes>
       </div>
       <BottomNav />

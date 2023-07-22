@@ -1,12 +1,15 @@
 import React from 'react'
 import {useQuery} from 'react-query'
 import { getData } from '../utils'
-
+import { SingleContent } from './SingleContent'
+import { ContentPagination } from './ContentPagination'
+import { useState} from 'react'
 
 const urlSeries=`https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_API_KEY}`
 
-export const Series = () => {
-  const { data,status, isLoading, isError } = useQuery(['tv', urlSeries], getData);
+export const Series = ({urlForGenre}) => {
+  const [page,setPage]=useState(1)
+  const { data,status, isLoading, isError } = useQuery(['tv', urlSeries+'&page='+page+'&with_genres='+urlForGenre], getData);
     
   if (isLoading) {
     return <div>Loading...</div>;
@@ -18,7 +21,18 @@ export const Series = () => {
   status=='success' && console.log(data.results);
 
 return (
-  <div>Series</div>
+  <div className="content">
+  {status=='success' && data.results.map(obj=>
+    <SingleContent key={obj.id}
+      id={obj.id}
+      poster={obj.poster_path}
+      title={obj.title || obj.name}
+      type={obj.media_type}
+      date={obj.release_date || obj.first_air_date}
+      vote={obj.vote_average}
+    />)}
+ <ContentPagination page={page} setPage={setPage} numOfPage={10}/>   
+</div>
 )
 }
 

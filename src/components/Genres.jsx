@@ -5,19 +5,15 @@ import Stack from '@mui/material/Stack';
 import { SingleChip } from './SingleChip';
 import { useEffect } from 'react';
 
-
-let x=''
-
-const urlGenres=`https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}`
-
 export const Genres = ({type,setUrlForGenre}) => {
+  const urlGenres=`https://api.themoviedb.org/3/genre/${type}/list?api_key=${import.meta.env.VITE_API_KEY}`
   const [selectedGenres,setSelectedGenres] =useState([])
+  
   useEffect(()=>{
     if(selectedGenres.length<1) setUrlForGenre('')
         else setUrlForGenre(selectedGenres.join(','))
   },[selectedGenres])
 
-     x=type
     const { data,status, isLoading, isError } = useQuery(['genres', urlGenres], getData);
     
     if (isLoading) {

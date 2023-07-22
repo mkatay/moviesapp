@@ -5,8 +5,6 @@ import { SingleContent } from './SingleContent'
 import { ContentPagination } from './ContentPagination'
 import { useState} from 'react'
 
-
-
 //const urlMovies=`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&sort_by=release_date.desc`
 //tesztre:
 //const urlMovies=`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=28,35,99`
@@ -38,7 +36,7 @@ return (
       date={obj.release_date || obj.first_air_date}
       vote={obj.vote_average}
     />)}
- <ContentPagination setPage={setPage} numOfPage={10}/>   
+ <ContentPagination page={page} setPage={setPage} numOfPage={10}/>   
 </div>
 )
 }

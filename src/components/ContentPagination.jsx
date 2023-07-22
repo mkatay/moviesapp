@@ -1,31 +1,25 @@
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import { ThemeProvider } from "@emotion/react";
-import {createTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 
-const darkTheme=createTheme({
-  palette:{
-    mode: "dark"
-  }
-  })
-
-export const ContentPagination = ({ setPage, numOfPage = 10 }) => {
-  const handlePageChange = (page) => {
-    setPage(page);
-    window.scrollTo(0, 0);
+export const ContentPagination = ({ page,setPage, numOfPage = 10 }) => {
+  const handleChange = (event,p) => {
+    console.log('oldal:',p);
+    setPage(p);
+     window.scrollTo(0, 0);
   };
-
   return (
     <div className="content-pagination">
-    <ThemeProvider theme={darkTheme}>
-      <Stack spacing={2}>
-        <Pagination
-          count={numOfPage}
-          onClick={(e) => handlePageChange(e.target.textContent)}       
-        />
-      </Stack>
-    </ThemeProvider>    
+    <Box p="5">
+      <Pagination
+        count={numOfPage}
+        size="large"
+        page={page}
+        color="primary"
+        shape="rounded"
+        onChange={handleChange}
+      />
+      </Box>
     </div>
   );
 };
