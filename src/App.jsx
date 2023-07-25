@@ -5,6 +5,7 @@ import { Trendings } from './components/Trendings'
 import { MoviesPage } from './components/MoviesPage'
 import { SeriesPage } from './components/SeriesPage'
 import { BottomNav } from './components/BottomNav'
+import { SearchPage } from './components/SearchPage'
 import {QueryClient,QueryClientProvider} from 'react-query'
 
 const queryClient=new QueryClient()
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Trendings />} />
         <Route path='/movies' element={<MoviesPage />} />
         <Route path='/series' element={<SeriesPage />} />
+        <Route path='/search' element={<SearchPage />} />
        </Routes>
       </div>
       <BottomNav />

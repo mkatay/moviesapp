@@ -5,9 +5,8 @@ import { SingleContent } from "./SingleContent";
 import { ContentPagination } from "./ContentPagination";
 import { useState } from "react";
 
-const urlTrending = `https://api.themoviedb.org/3/trending/movie/day?api_key=${
-  import.meta.env.VITE_API_KEY
-}`;
+const urlTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${
+  import.meta.env.VITE_API_KEY}&include_adult=false`;
 
 export const Trendings = () => {
   const [page, setPage] = useState(1);

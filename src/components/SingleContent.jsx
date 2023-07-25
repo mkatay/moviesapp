@@ -12,6 +12,7 @@ export const SingleContent = ({id,poster,title,type,date,vote}) => {
             <span>{type}</span>
             <span>{date}</span>
         </div>
+        <div className="vote">{vote}</div>
     </div>
   )
 }

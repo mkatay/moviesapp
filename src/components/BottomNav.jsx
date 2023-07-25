@@ -5,6 +5,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SearchIcon from '@mui/icons-material/Search';
 import {NavLink,useLocation} from 'react-router-dom'
 import { makeStyles } from '@mui/styles'
 
@@ -48,6 +49,13 @@ export const BottomNav=()=> {
           component={NavLink} 
           value='/series'
           to='/series'
+          
+         
+          />
+           <BottomNavigationAction label="search" icon={<SearchIcon />} 
+          component={NavLink} 
+          value='/search'
+          to='/search'
           
          
           />
