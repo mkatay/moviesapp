@@ -5,8 +5,7 @@ import { SingleContent } from "./SingleContent";
 import { ContentPagination } from "./ContentPagination";
 import { useState } from "react";
 
-const urlTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${
-  import.meta.env.VITE_API_KEY}&include_adult=false`;
+const urlTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${import.meta.env.VITE_API_KEY}&include_adult=false`;
 
 export const Trendings = () => {
   const [page, setPage] = useState(1);
@@ -22,7 +21,7 @@ export const Trendings = () => {
   if (isError) {
     return <div>Error occurred while fetching data!</div>;
   }
-  status == "success" && console.log(data.results);
+  status == "success" && console.log(data.results,data.total_pages);
 
   return (
     <>
@@ -40,7 +39,7 @@ export const Trendings = () => {
               vote={obj.vote_average}
             />
           ))}
-        <ContentPagination page={page} setPage={setPage} numOfPage={10} />
+        <ContentPagination page={page} setPage={setPage} numOfPage={data.total_pages>500? 500 : data.total_pages} />
       </div>{" "}
     </>
   );

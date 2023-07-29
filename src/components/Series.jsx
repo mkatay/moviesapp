@@ -22,16 +22,20 @@ export const Series = ({urlForGenre}) => {
 
 return (
   <div className="content">
-  {status=='success' && data.results.map(obj=>
+  {status=='success' && data.results.length>0 ? 
+    data.results.map(obj=>
     <SingleContent key={obj.id}
       id={obj.id}
       poster={obj.poster_path}
       title={obj.title || obj.name}
-      type={obj.media_type}
+      type='TV Series'
       date={obj.release_date || obj.first_air_date}
       vote={obj.vote_average}
-    />)}
- <ContentPagination page={page} setPage={setPage} numOfPage={10}/>   
+    />)
+  :
+  <div>no results found</div>
+  }
+ <ContentPagination page={page} setPage={setPage} numOfPage={data.total_pages>500? 500 : data.total_pages}/>   
 </div>
 )
 }

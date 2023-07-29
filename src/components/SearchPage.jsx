@@ -6,9 +6,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { SearchResults } from "./SearchResults";
 
 
-
-  
-
 export const SearchPage = () => {
   const [type, setType] = useState(0);
   const [searchText,setSearchText] = useState("")
@@ -44,8 +41,8 @@ console.log(searchText);
             <SearchIcon />
           </Button>
         </div>
-        <div style={{ display: "flex", margin: "15px auto",maxWidth:'300px',justifyContent: "center"}}>
-        <Tabs value={type} indicatorColor="primary" textColor="primary"
+        <div >
+        <Tabs value={type} indicatorColor="primary" textColor="primary" centered
             onChange={handleChange} 
         >
             <Tab  label="Search Movies" />

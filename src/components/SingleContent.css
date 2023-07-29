@@ -1,37 +1,48 @@
-.single-content{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    background-color: rgb(58, 1, 98);
-    color: white;
-    padding: 10px;
-    margin:5px;
-    border-radius: 5px;
-    position: relative;
+.single-content {
+  font-family: "Montserrat" !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 300px;/*modal után*/
+  height: 100%;/*modal után*/
+  background-color: rgb(58, 1, 98) !important;
+  color: white !important;
+  padding: 10px !important;
+  margin: 5px !important;
+  border-radius: 5px !important;
+  position: relative !important;
+
 }
 .single-content:hover {
-    background-color:white;
-    color: rgb(58, 1, 98);
+  background-color: white !important;
+  color: rgb(58, 1, 98) !important;
 }
-.info{
-display: flex;
-justify-content: space-around;
+.info {
+  /*border:1px solid red;*/
+  width: 100%;
+  display: flex !important;
+  justify-content: space-around !important;
 }
-.single-content h3{
-    text-align: center;
-    text-transform: uppercase;;
+.single-content h3 {
+  text-align: center !important;
+  text-transform: uppercase !important;
 }
-.vote{
-    width: 30px;
-    height: 30px;
-    border: 1px solid #eee;
-    border-radius:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.6rem;
-    position: absolute;
-    top:-10px;
-    right: 0;
-  
+.vote {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6rem;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+/*modal után javítani:*/
+.poster{
+width: 100%;
+}
+.modal-holder{
+  margin-bottom: 10px;
 }

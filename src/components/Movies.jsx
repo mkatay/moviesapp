@@ -22,7 +22,7 @@ export const Movies = ({urlForGenre}) => {
   if (isError) {
     return <div>Error occurred while fetching data!</div>;
   }
-  status=='success' && console.log(data.results);
+  status=='success' && console.log(data.results,data.total_pages);
 
 return (
   <div className="content">
@@ -32,11 +32,11 @@ return (
       id={obj.id}
       poster={obj.poster_path}
       title={obj.title || obj.name}
-      type={obj.media_type}
+      type='movie'
       date={obj.release_date || obj.first_air_date}
       vote={obj.vote_average}
     />)}
- <ContentPagination page={page} setPage={setPage} numOfPage={10}/>   
+ <ContentPagination page={page} setPage={setPage} numOfPage={data.total_pages>500? 500 : data.total_pages}/>   
 </div>
 )
 }
