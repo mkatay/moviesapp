@@ -11,6 +11,7 @@
   border-radius: 5px !important;
   position: relative !important;
 
+
 }
 .single-content:hover {
   background-color: white !important;
@@ -42,7 +43,4 @@
 /*modal után javítani:*/
 .poster{
 width: 100%;
-}
-.modal-holder{
-  margin-bottom: 10px;
 }
