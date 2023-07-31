@@ -28,7 +28,7 @@ return (
       id={obj.id}
       poster={obj.poster_path}
       title={obj.title || obj.name}
-      type='TV Series'
+      type='tv'
       date={obj.release_date || obj.first_air_date}
       vote={obj.vote_average}
     />)

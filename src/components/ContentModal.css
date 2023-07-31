@@ -2,19 +2,30 @@
 .MuiModal-root{
     overflow-y:scroll;
   }
+ 
 .content-modal{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-   
+  
     
 }
 .content-modal img{
-    object-fit: contain;
+  object-fit: contain;
     border-radius: 10px;
+
+}
+@media (max-width:600px){
+    .content-modal img{
+        object-fit: none;
+        width:100%
+      }
+     
 }
 .modal_about{
     margin-top:10px;
+    display: flex;
+    flex-direction: column;
 }
 .modal_about span{
     font-size:2rem;
@@ -24,6 +35,8 @@
    text-align: center;
 }
 .overview{
+    display: flex;
+    flex-wrap: wrap;
     text-align: justify;
     padding:1rem;
     box-shadow: 0 0 15px gray;
