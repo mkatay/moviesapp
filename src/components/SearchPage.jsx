@@ -44,6 +44,7 @@ console.log(searchText);
         <div >
         <Tabs value={type} indicatorColor="primary" textColor="primary" centered
             onChange={handleChange} 
+            
         >
             <Tab  label="Search Movies" />
             <Tab  label="Search TV Series" />

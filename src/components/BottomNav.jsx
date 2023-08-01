@@ -45,7 +45,7 @@ export const BottomNav=()=> {
           to='/movies' 
          
           />
-        <BottomNavigationAction label="TV-Series" icon={<ConnectedTvIcon />} 
+        <BottomNavigationAction label="TV" icon={<ConnectedTvIcon />} 
           component={NavLink} 
           value='/series'
           to='/series'
