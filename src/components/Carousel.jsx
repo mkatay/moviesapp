@@ -15,7 +15,7 @@ const responsive={
 export const Carousel = ({type,id}) => {
     const urlCredits=`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}`;
     const {data,status}=useQuery(['credits',urlCredits],getData)
-    status=='success' && console.log(data.cast);
+    status=='success' && console.log(data.cast,data);
 
     const items=status=="success" ? data.cast.map(obj=>(
         <div className="carousel-item">

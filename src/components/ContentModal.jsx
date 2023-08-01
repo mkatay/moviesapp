@@ -19,7 +19,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '80%',
+  width: '85%',
   maxWidth: '800px',
   bgcolor: 'background.paper',
   border: '2px solid #000',
@@ -45,7 +45,7 @@ export const ContentModal=({children,type,id})=> {
 
 
 
-  console.log(type,id);
+  //console.log(type,id);
 //status=='success' && console.log(data);
 statusVideos=='success' && console.log(dataVideos?.results[0]);
   return (
@@ -70,7 +70,7 @@ statusVideos=='success' && console.log(dataVideos?.results[0]);
           <Box sx={style}>
            {status=='success' &&
             <div className="content-modal">
-              <img  src={data.poster_path ? img_500+data.backdrop_path : imgUnavailable} alt={data?.title || data?.name} />
+              <img  src={data.backdrop_path ? img_300+data.backdrop_path : imgUnavailable} alt={data?.title || data?.name} />
               <Box sx={{display:'flex',flexDirection:'column'}}>
                 <div><b>{data?.title || data?.name}</b>({(data?.release_date||data?.first_air_date)||data?.published_at})</div>
                 <div className="tagline"><i>{data.tagline}</i></div>
