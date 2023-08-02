@@ -7,14 +7,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  
+
     
 }
-.content-modal img{
+.content-modal img {
   object-fit: contain;
     border-radius: 10px;
+ 
 
 }
+.lazy-holder{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+
+
 @media (max-width:600px){
     .content-modal img{
         object-fit: none;

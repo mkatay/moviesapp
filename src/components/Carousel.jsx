@@ -2,7 +2,7 @@ import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { useQuery } from 'react-query';
-import { getData,img_300 ,imgUnavailable} from '../utils';
+import { getData,img_300 ,noPicture} from '../utils';
 import './Carousel.css'
 const handleDragStart = (e) => e.preventDefault();
 
@@ -19,7 +19,7 @@ export const Carousel = ({type,id}) => {
 
     const items=status=="success" ? data.cast.map(obj=>(
         <div className="carousel-item">
-            <img src={obj.profile_path ? img_300+obj.profile_path : imgUnavailable} alt={obj?.name}
+            <img src={obj.profile_path ? img_300+obj.profile_path : noPicture} alt={obj?.name}
                 onDragStart={handleDragStart}
                 className='carousel-item-img'
             />

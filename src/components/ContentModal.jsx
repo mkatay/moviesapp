@@ -5,13 +5,13 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import { useQuery } from 'react-query';
 import { getData } from '../utils';
-import {img_500} from '../utils'
-import {img_300} from '../utils'
-import { imgUnavailable } from '../utils'
+import {img_500,img_300} from '../utils'
+import { noPictureLandscape } from '../utils'
 import './ContentModal.css'
 import { Box} from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Carousel } from './Carousel';
+import {LazyLoadImage} from 'react-lazy-load-image-component'
 
 
 const style = {
@@ -70,8 +70,19 @@ statusVideos=='success' && console.log(dataVideos?.results[0]);
           <Box sx={style}>
            {status=='success' &&
             <div className="content-modal">
-              <img  src={data.backdrop_path ? img_300+data.backdrop_path : imgUnavailable} alt={data?.title || data?.name} />
-              <Box sx={{display:'flex',flexDirection:'column'}}>
+              {/*img  src={data.backdrop_path ? img_500+data.backdrop_path : noPictureLandscape} alt={data?.title || data?.name} />*/}
+              <div className="lazy-holder">
+                <LazyLoadImage
+         
+                src={data.backdrop_path ? img_500+data.backdrop_path : noPictureLandscape}
+                alt={data?.title || data?.name}
+               
+                placeholderSrc='placeholder.webp'
+                effect="blur"
+              />
+              </div>
+              
+              <Box sx={{display:'flex',flexDirection:'column',alignItems: 'center'}}>
                 <div><b>{data?.title || data?.name}</b>({(data?.release_date||data?.first_air_date)||data?.published_at})</div>
                 <div className="tagline"><i>{data.tagline}</i></div>
                 <div className="overview">{data.overview}</div>
